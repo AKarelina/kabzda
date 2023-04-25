@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import o from './ControlledOnOff.module.css'
 
 type ControlledOnOffType = {
     on: boolean,
@@ -38,11 +37,10 @@ export const ControlledOnOff = (props: ControlledOnOffType) => {
     const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     e.currentTarget.innerText === "On" ? props.setOn(true): props.setOn(false)
     }
-
     return (
         <div>
-            <div style={onStyle} onClick={()=>props.setOn(true)}>On</div>
-            <div style={offStyle} onClick={()=>props.setOn(false)}>Off</div>
+            <div style={onStyle} onClick={onClickHandler}>On</div>
+            <div style={offStyle} onClick={onClickHandler}>Off</div>
             <div style={indicatorStyle}></div>
         </div>
     )

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Accordion} from "./Accordion/Accordion";
 import {Rating} from "./Rating";
-import {OnOff} from "./OnOff/OnOff";
+import {UncontrolledOnOff} from "./UncontrolledOnOff/UncontrolledOnOff";
 import {UncontrolledAccordion} from "./UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRating} from "./UncontrolledRating/UncontrolledRating";
 import {ControlledAccordion} from "./ControlledAccordion/ControlledAccordion";
@@ -27,10 +27,10 @@ function App() {
         {/*<UncontrolledAccordion accordionTitle={"Menu"}/>*/}
         {/*<UncontrolledAccordion accordionTitle={"Users"}/>*/}
         {/*<UncontrolledRating/>*/}
-        {/*<OnOff/>*/}
+        <UncontrolledOnOff onChange={setOn}/> {on.toString()}
         <ControlledAccordion setCollapsed={setAccordionCollapsed} collapsed={accordionCollapsed} accordionTitle={"Controlled Menu"}/>
         <ControlledRating value={value} onClick={setValue}/>
-        <ControlledOnOff setOn={(status)=>setOn(status)} on={on}/>
+        {/*<ControlledOnOff setOn={(status)=>setOn(status)} on={on}/>*/}
 
     </div>
   );

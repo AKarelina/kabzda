@@ -1,14 +1,15 @@
 import React, {useState} from 'react'
-import o from './OnOff.module.css'
 
 
+type UncontrolledOnOffType = {
+    onChange: (status: boolean) => void
+}
 
-
-export const OnOff = () => {
+export const UncontrolledOnOff = (props: UncontrolledOnOffType) => {
     const [on, setOn] = useState<boolean>(false)
 
     const onStyle = {
-        backgroundColor: on? "green": "white",
+        backgroundColor: on ? "green" : "white",
         width: "30px",
         border: "1px solid black",
         display: "inline-block",
@@ -16,7 +17,7 @@ export const OnOff = () => {
     }
 
     const offStyle = {
-        backgroundColor: on? "white": "red",
+        backgroundColor: on ? "white" : "red",
         width: "30px",
         border: "1px solid black",
         display: "inline-block",
@@ -32,15 +33,18 @@ export const OnOff = () => {
         display: "inline-block",
         backgroundColor: on ? "green" : "red"
     }
-
-    const onClickHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.currentTarget.innerText === "On" ? setOn(true): setOn(false)
+    const onClicked = () => {
+        setOn(true)
+        props.onChange(true)
     }
-
+    const offClicked = () => {
+        setOn(false)
+        props.onChange(false)
+    }
     return (
         <div>
-            <div style={onStyle} onClick={onClickHandler}>On</div>
-            <div style={offStyle} onClick={onClickHandler}>Off</div>
+            <div style={onStyle} onClick={onClicked}>On</div>
+            <div style={offStyle} onClick={offClicked}>Off</div>
             <div style={indicatorStyle}></div>
         </div>
     )
