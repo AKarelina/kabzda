@@ -6,7 +6,7 @@ type ControlledRatingType = {
     value: RatingValueType
     onClick: (ratingValue: RatingValueType) => void
 }
-export const ControlledRating = (props: ControlledRatingType) => {
+export const Rating = (props: ControlledRatingType) => {
 
     return (
         <div>

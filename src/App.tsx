@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Accordion} from "./Accordion/Accordion";
-import {Rating} from "./Rating";
 import {UncontrolledOnOff} from "./UncontrolledOnOff/UncontrolledOnOff";
 import {UncontrolledAccordion} from "./UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRating} from "./UncontrolledRating/UncontrolledRating";
 import {ControlledAccordion} from "./ControlledAccordion/ControlledAccordion";
-import {ControlledRating, RatingValueType} from "./ControlledRating/ControlledRating";
+import {Rating, RatingValueType} from "./ControlledRating/Rating";
 import {ControlledOnOff} from "./ControlledOnOff/ControlledOnOff";
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
         {/*<UncontrolledRating/>*/}
         <UncontrolledOnOff onChange={setOn}/> {on.toString()}
         <ControlledAccordion setCollapsed={setAccordionCollapsed} collapsed={accordionCollapsed} accordionTitle={"Controlled Menu"}/>
-        <ControlledRating value={value} onClick={setValue}/>
+        <Rating value={value} onClick={setValue}/>
         {/*<ControlledOnOff setOn={(status)=>setOn(status)} on={on}/>*/}
 
     </div>
