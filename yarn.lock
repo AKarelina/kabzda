@@ -2199,7 +2199,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@storybook/addon-actions@7.0.7":
+"@storybook/addon-actions@7.0.7", "@storybook/addon-actions@^7.0.7":
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-7.0.7.tgz#d35c77a0ae0127562da5b5c27dc68ebd72fdebf7"
   integrity sha512-WxsnSjAvdf6NhUfTqcwV+FJmsJV56gh2cY4QnGfqfwO5zoBWTUYnhz57TgxSMhJY0kspyX9Q1Kc//r1d5lt1qA==

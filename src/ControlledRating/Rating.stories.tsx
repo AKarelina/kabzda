@@ -1,7 +1,6 @@
 import type { Meta} from '@storybook/react';
 import {Rating, RatingValueType} from "./Rating";
 import {StoryObj} from "@storybook/react";
-import {Page} from "../stories/Page";
 import {useState} from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
