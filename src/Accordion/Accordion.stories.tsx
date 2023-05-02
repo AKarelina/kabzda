@@ -1,7 +1,8 @@
-import type { Meta} from '@storybook/react';;
-import {StoryObj} from "@storybook/react";
+import type { Meta} from '@storybook/react';
 import {Accordion} from "./Accordion";
-import React from "react";
+import {StoryObj} from "@storybook/react";
+
+import React, {useState} from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Accordion> = {
@@ -14,7 +15,8 @@ const meta: Meta<typeof Accordion> = {
 export default meta;
 type Story = StoryObj<typeof Accordion>;
 
-export const CollapsedMode = () =><Accordion accordionTitle={"Collapsed Accordion"} collapsed={true}/>
-export const UnCollapsedMode = () =><Accordion accordionTitle={"Collapsed Accordion"} collapsed={false}/>
+export const CollapsedMode = () =><Accordion accordionTitle={"Menu"} collapsed={true}/>
+export const UnCollapsedMode = () =><Accordion accordionTitle={"Users"} collapsed={false}/>
+
 
 

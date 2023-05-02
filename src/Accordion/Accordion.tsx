@@ -20,7 +20,6 @@ export const Accordion =(props: AccordionPropsType)=>{
     )
 }
 
-
 const AccordionTitle = (props: AccordionTitle) => {
     return (
         <h3>{props.title}</h3>
