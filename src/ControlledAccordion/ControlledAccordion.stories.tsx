@@ -17,14 +17,15 @@ type Story = StoryObj<typeof ControlledAccordion>;
 
 
 const callBack = action("change mode true or false")
-export const CollapsedMode = () =><ControlledAccordion accordionTitle={"Menu"} collapsed={true} setCollapsed={callBack}/>
-export const UnCollapsedMode = () =><ControlledAccordion accordionTitle={"Users"} collapsed={false} setCollapsed={callBack}/>
+const callBackOnClick = action("change value")
+export const CollapsedMode = () =><ControlledAccordion onClickCallback={callBack} accordionTitle={"Menu"} collapsed={true} setCollapsed={callBack} items={[]}/>
+export const UnCollapsedMode = () =><ControlledAccordion onClickCallback={callBackOnClick} accordionTitle={"Users"} collapsed={false} setCollapsed={callBack} items={[{title:"Anna",value:1 }]}/>
 
 export const ChangeMode = () => {
 
     const [collapsed, setCollapsed] = useState<boolean>(false)
     return (
-        <ControlledAccordion accordionTitle={"Users"} collapsed={collapsed} setCollapsed={setCollapsed}/>
+        <ControlledAccordion onClickCallback={callBackOnClick} accordionTitle={"Users"} collapsed={collapsed} setCollapsed={setCollapsed} items={[{title:"Anna",value:1 }]}/>
     )
 }
 
