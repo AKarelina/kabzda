@@ -1,5 +1,5 @@
 import type { Meta} from '@storybook/react';
-import {ControlledOnOff} from './ControlledOnOff';
+import {ControlledOnOff, ControlledOnOffType} from './ControlledOnOff';
 import {StoryObj} from "@storybook/react";
 import {useState} from "react";
 import {action} from "@storybook/addon-actions";
@@ -13,17 +13,26 @@ const meta: Meta<typeof ControlledOnOff> = {
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 
+
+type Story = StoryObj<typeof ControlledOnOff>;
+export const OnMode: Story = {
+    args: {
+        on: true,
+        setOn: action("clicked on or off"),
+    },
+};
+
+export const OffMode: Story = {
+    args: {
+        on: false,
+        setOn: action("clicked on or off"),
+    },
+};
+
 export const OnControlledOnOFF = () => {
-    const [on, setOn] = useState<boolean>(false)
+const [on, setOn] = useState<boolean>(false)
     return (
         <ControlledOnOff on={on} setOn={setOn}/>
         )
 }
-
-const callBack = action("on or off was called")
-export const OnMode = () => <ControlledOnOff on={true} setOn={callBack}/>
-
-export const OffMode = () => <ControlledOnOff on={false} setOn={callBack}/>
-
 export default meta;
-type Story = StoryObj<typeof ControlledOnOff>;

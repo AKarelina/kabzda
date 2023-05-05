@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
 
-type ControlledOnOffType = {
+export type ControlledOnOffType = {
     on: boolean,
+    /**
+     * Callback that is called when button is clicked
+     * @param status
+     */
     setOn: (status: boolean) => void
 }
 
