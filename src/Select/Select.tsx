@@ -1,5 +1,7 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {action} from "@storybook/addon-actions";
+import SelectInput from "@mui/material/Select/SelectInput";
+import {MenuItem, NativeSelect} from "@mui/material";
 
 type ItemType = {
     title: string,
@@ -14,18 +16,18 @@ type SelectType = {
 
 export const Select = (props: SelectType) => {
 
-    const [value, setValue] = useState<string>("none")
+    const [value, setValue] = useState<string>("None")
     const onClickSelect = (event: React.MouseEvent<HTMLOptionElement>) => {
-        action("City is select" + value,)
+        action("City is select" + value)
         setValue(event.currentTarget.value)
     }
     return (
         <>
             <div>Select city</div>
-            <select>
+            <NativeSelect color="success">
                 <option>{value}</option>
             {props.items.map((i) =><option value={i.value} onClick={onClickSelect}>{i.title}</option>)}
-            </select>
+            </NativeSelect>
         </>
 
     )

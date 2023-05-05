@@ -12,6 +12,7 @@ function App() {
     const [value, setValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true)
     const [on, setOn] = useState<boolean>(false)
+    const [newValue, setNewValue] = useState("")
 
   return (
     <div className="App">
@@ -27,7 +28,7 @@ function App() {
         {/*<UncontrolledAccordion accordionTitle={"Users"}/>*/}
         {/*<UncontrolledRating/>*/}
         <UncontrolledOnOff onChange={setOn}/> {on.toString()}
-        <ControlledAccordion setCollapsed={setAccordionCollapsed} collapsed={accordionCollapsed} accordionTitle={"Controlled Menu"}/>
+        {/*<ControlledAccordion onClickCallback={} setCollapsed={setAccordionCollapsed} collapsed={accordionCollapsed} accordionTitle={"Controlled Menu"}/>*/}
         <Rating value={value} onClick={setValue}/>
         {/*<ControlledOnOff setOn={(status)=>setOn(status)} on={on}/>*/}
 

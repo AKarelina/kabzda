@@ -12,19 +12,19 @@ const meta: Meta<typeof Select> = {
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 export const SelectOption = () => {
-    const [city, setCity] = useState<string | null>(null)
+    const [city, setCity] = useState<string>("None")
     const selectCity = (title: string) => {
         setCity(title)
 
     }
     return (
         <>
-            <Select items={[{title: "None", value: 0},
-                {title: "Moscow", value: 1},
-                {title: "Berlin", value: 2},
-                {title: "Paris", value: 3},
-                {title: "Milan", value: 4},
-                {title: "New York", value: 0}]} onChange={selectCity}/>
+            <Select items={[
+                {title: "Moscow", value: 0},
+                {title: "Berlin", value: 1},
+                {title: "Paris", value: 2},
+                {title: "Milan", value: 3},
+                {title: "New York", value: 4}]} onChange={selectCity}/>
         </>
         )
 
