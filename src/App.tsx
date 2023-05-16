@@ -7,12 +7,16 @@ import {UncontrolledRating} from "./UncontrolledRating/UncontrolledRating";
 import {ControlledAccordion} from "./ControlledAccordion/ControlledAccordion";
 import {Rating, RatingValueType} from "./ControlledRating/Rating";
 import {ControlledOnOff} from "./ControlledOnOff/ControlledOnOff";
+import {Select} from "./Select/Select";
 
 function App() {
     const [value, setValue] = useState<RatingValueType>(0)
     const [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true)
     const [on, setOn] = useState<boolean>(false)
     const [newValue, setNewValue] = useState("")
+    const [selectedItem, setSelectedItem] = useState(null)
+
+
 
   return (
     <div className="App">
@@ -31,6 +35,14 @@ function App() {
         {/*<ControlledAccordion onClickCallback={} setCollapsed={setAccordionCollapsed} collapsed={accordionCollapsed} accordionTitle={"Controlled Menu"}/>*/}
         <Rating value={value} onClick={setValue}/>
         {/*<ControlledOnOff setOn={(status)=>setOn(status)} on={on}/>*/}
+        <Select onChange={setSelectedItem}
+                value={"1"}
+                items={[
+                {title: "Moscow", value: "1"},
+        {title: "Berlin", value: "2"},
+        {title: "Paris", value: "3"},
+        {title: "Milan", value: "4"},
+        {title: "New York", value: "5"}]}/>
 
     </div>
   );

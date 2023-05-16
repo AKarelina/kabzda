@@ -1,7 +1,8 @@
 import type {Meta} from '@storybook/react';
-import {StoryObj} from "@storybook/react";
-import {useState} from "react";
 import {Select} from "./Select";
+import {action} from "@storybook/addon-actions";
+import {useState} from "react";
+
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Select> = {
@@ -11,23 +12,41 @@ const meta: Meta<typeof Select> = {
     tags: ['autodocs']
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
-export const SelectOption = () => {
-    const [city, setCity] = useState<string>("None")
-    const selectCity = (title: string) => {
-        setCity(title)
+export const WithValue = () => {
+    const [selectedItem, setSelectedItem] = useState("1")
 
-    }
     return (
-        <>
-            <Select items={[
-                {title: "Moscow", value: 0},
-                {title: "Berlin", value: 1},
-                {title: "Paris", value: 2},
-                {title: "Milan", value: 3},
-                {title: "New York", value: 4}]} onChange={selectCity}/>
-        </>
+            <Select
+                value={selectedItem}
+                items={[
+                {title: "Moscow", value: "1"},
+                {title: "Berlin", value: "2"},
+                {title: "Paris", value: "3"},
+                {title: "Milan", value: "4"},
+                {title: "New York", value: "5"}]}
+                onChange={setSelectedItem}/>
+
         )
 
 }
+
+export const WithoutValue = () => {
+    const [selectedItem, setSelectedItem] = useState(null)
+    return (
+        <Select
+            value={selectedItem}
+            items={[
+                {title: "Moscow", value: "1"},
+                {title: "Berlin", value: "2"},
+                {title: "Paris", value: "3"},
+                {title: "Milan", value: "4"},
+                {title: "New York", value: "5"}]}
+            onChange={setSelectedItem}/>
+    )
+
+}
+
+
+
 
 export default meta;
