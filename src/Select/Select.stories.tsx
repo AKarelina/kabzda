@@ -1,8 +1,6 @@
 import type {Meta} from '@storybook/react';
 import {Select} from "./Select";
-import {action} from "@storybook/addon-actions";
 import {useState} from "react";
-
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Select> = {
@@ -12,41 +10,23 @@ const meta: Meta<typeof Select> = {
     tags: ['autodocs']
     // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
-export const WithValue = () => {
-    const [selectedItem, setSelectedItem] = useState("1")
+
+
+export const SelectWithValue = () => {
+    const [value, setValue] = useState("1")
 
     return (
-            <Select
-                value={selectedItem}
-                items={[
-                {title: "Moscow", value: "1"},
-                {title: "Berlin", value: "2"},
-                {title: "Paris", value: "3"},
-                {title: "Milan", value: "4"},
-                {title: "New York", value: "5"}]}
-                onChange={setSelectedItem}/>
-
-        )
-
-}
-
-export const WithoutValue = () => {
-    const [selectedItem, setSelectedItem] = useState(null)
-    return (
-        <Select
-            value={selectedItem}
-            items={[
-                {title: "Moscow", value: "1"},
-                {title: "Berlin", value: "2"},
-                {title: "Paris", value: "3"},
-                {title: "Milan", value: "4"},
-                {title: "New York", value: "5"}]}
-            onChange={setSelectedItem}/>
+        <Select currentValue={value}
+                onChange={setValue}
+                options={
+                    [
+                        {item: "Moscow", value: "1"},
+                        {item: "New York", value: "2"},
+                        {item: "Paris", value: "3"},
+                        {item: "Tashkent", value: "4"},
+                    ]}
+        />
     )
 
 }
-
-
-
-
 export default meta;

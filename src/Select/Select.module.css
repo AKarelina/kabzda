@@ -1,17 +1,21 @@
-.select .main{
-    border: 1px solid black;
+.select .span {
+    border: black 1px solid;
     display: inline-block;
-    min-height: 40px;
-    min-width: 20px;
+    padding: 7px;
 }
+
 
 .items {
-    border: 1px solid red;
     position: absolute;
-    padding: 5px;
+    border: black 1px solid;
+    padding: 7px;
 }
 
-.item.selected {
-    background-color: #61dafb;
-    color: #282c34;
+.select.active .items {
+    display: block;
 }
+
+.highlightElement {
+    background-color: #61dafb;
+}
+

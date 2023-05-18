@@ -1,82 +1,87 @@
-import React, {useState, KeyboardEvent, useEffect} from "react";
-import styles from "./Select.module.css"
-
-type ItemType = {
-    title: string,
-    value: any
-}
-
+import styles from './Select.module.css';
+import {useEffect, useState} from "react";
 
 type SelectType = {
-    value?: any,
-    onChange: (value: any) => void,
-    items: ItemType[]
+    currentValue: string
+    options: Array<OptionsType>
+    onChange: (value: string) => void
+
 }
 
-export const Select = (props: SelectType) => {
-    const [active, setActive] = useState(false)
-    const [hoveredItemValue, setHoveredItemValue] = useState(props.value)
-
-    let selectedItem = props.items.find((i) => i.value === props.value)
-    let hoveredItem = props.items.find((i) => i.value === hoveredItemValue)
-
-    useEffect(() => {
-        setHoveredItemValue(props.value)
-    }, [props.value])
-
-    const toggleItems = () => setActive(!active)
-
-    const onItemClick = (value: any) => {
-        props.onChange(value)
-        toggleItems()
+type OptionsType =
+    {
+        item: string,
+        value: string
     }
 
 
 
-    const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
-        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-            for (let i = 0; i < props.items.length; i++) {
-                if (hoveredItemValue === props.items[i].value) {
-                    const nextValue = e.key === "ArrowDown"
-                        ? props.items[i + 1]
-                        : props.items[i - 1]
-                    if(nextValue) {
-                        props.onChange(nextValue.value)
-                        return;
+export const Select = (props: SelectType) => {
+    const [active, setActive] = useState<boolean>(false)
+    const [hoverItem, setHoverItem] = useState<string>(props.currentValue)
+
+    const selectedItem = props.options.find(o=>o.value === props.currentValue)
+    console.log(selectedItem)
+
+
+    useEffect(()=> {
+        setHoverItem(props.currentValue)
+    }, [props.currentValue])
+
+
+    const hoverElement = (value: string) => {
+        setHoverItem(value)
+    }
+    const showItems = () => {
+        setActive(!active)
+    }
+
+    const itemClicked = (value: string) => {
+        props.onChange(value)
+        showItems()
+    }
+
+    const iterateItems = (e:React.KeyboardEvent<HTMLDivElement>) => {
+        if(e.key === "ArrowUp" || e.key === "ArrowDown"){
+            for(let i =0; i< props.options.length; i++){
+                if(props.options[i].value === hoverItem) {
+                    const nextElement = e.key === "ArrowDown"
+                        ? props.options[i + 1]
+                        : props.options[i - 1]
+                    if(nextElement){
+                        props.onChange(nextElement.value)
+                        return
                     }
                 }
             }
-            if(!selectedItem) {
-                props.onChange(props.items[0].value)
+            if(!selectedItem){
+                props.onChange(props.options[0].value)
             }
-
         }
-        if (e.key === "Enter" || e.key === "Escape"){
+        if(e.key === "Enter" || e.key === "Escape"){
             setActive(false)
         }
     }
-    return (
-        <>
-            <div className={styles.select} onKeyUp={onKeyUp} tabIndex={0}>
-                <span className={styles.main} onClick={toggleItems}>
-                    {selectedItem && selectedItem.title}
-                </span>
-                {
-                    active &&
-                    <div className={styles.items}>
-                        {props.items.map(i =>
-                            <div
-                                onMouseEnter={() => setHoveredItemValue(i.value)}
-                                className={styles.item + " " + (hoveredItem === i ? styles.selected : "")}
-                                onClick={() => onItemClick(i.value)}
-                                key={i.value}
-                                tabIndex={i.value}>{i.title}
-                            </div>
-                        )}
-                    </div>
-                }
 
-            </div>
-        </>
+
+    return (
+        <div className={styles.select} onKeyUp={iterateItems} tabIndex={0}>
+            <span className={styles.span} onClick={showItems}>{selectedItem && selectedItem.item}</span>
+            {active &&
+                <div className={styles.items}>
+                    {props.options.map((o) =>{
+                        return (
+                            <div
+                                className={hoverItem===o.value? styles.highlightElement: ""}
+                                onClick={()=>itemClicked(o.value)}
+                                onMouseEnter={()=>hoverElement(o.value)}
+                                key={o.value}
+                            >
+                                {o.item}
+                            </div>)
+                    })}
+                </div>
+        }
+        </div>
     )
 }
