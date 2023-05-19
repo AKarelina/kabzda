@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useReducer} from "react";
 
 type AccordionPropsType = {
     accordionTitle: string
@@ -9,12 +9,16 @@ type AccordionTitle = {
     title: string
 }
 
+type ActionType = {
+    type: string
+}
+
 export const Accordion =(props: AccordionPropsType)=>{
 
     return(
         <div>
             <AccordionTitle title={props.accordionTitle}/>
-            {!props.collapsed && <AccordionBody/>}
+            {props.collapsed && <AccordionBody/>}
         </div>
 
     )

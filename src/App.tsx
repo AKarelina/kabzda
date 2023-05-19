@@ -7,7 +7,7 @@ import {UncontrolledRating} from "./UncontrolledRating/UncontrolledRating";
 import {ControlledAccordion} from "./ControlledAccordion/ControlledAccordion";
 import {Rating, RatingValueType} from "./ControlledRating/Rating";
 import {ControlledOnOff} from "./ControlledOnOff/ControlledOnOff";
-import {Select} from "./Select/Select";
+
 
 function App() {
     const [value, setValue] = useState<RatingValueType>(0)
@@ -28,21 +28,21 @@ function App() {
         {/*<Rating value={3}/>*/}
         {/*<Rating value={4}/>*/}
         {/*<Rating value={5}/>*/}
-        {/*<UncontrolledAccordion accordionTitle={"Menu"}/>*/}
+        <UncontrolledAccordion accordionTitle={"Menu"}/>
         {/*<UncontrolledAccordion accordionTitle={"Users"}/>*/}
         {/*<UncontrolledRating/>*/}
         <UncontrolledOnOff onChange={setOn}/> {on.toString()}
         {/*<ControlledAccordion onClickCallback={} setCollapsed={setAccordionCollapsed} collapsed={accordionCollapsed} accordionTitle={"Controlled Menu"}/>*/}
         <Rating value={value} onClick={setValue}/>
         {/*<ControlledOnOff setOn={(status)=>setOn(status)} on={on}/>*/}
-        <Select onChange={setSelectedItem}
-                value={"1"}
-                items={[
-                {title: "Moscow", value: "1"},
-        {title: "Berlin", value: "2"},
-        {title: "Paris", value: "3"},
-        {title: "Milan", value: "4"},
-        {title: "New York", value: "5"}]}/>
+        {/*<Select onChange={setSelectedItem}*/}
+        {/*        value={"1"}*/}
+        {/*        items={[*/}
+        {/*        {title: "Moscow", value: "1"},*/}
+        {/*{title: "Berlin", value: "2"},*/}
+        {/*{title: "Paris", value: "3"},*/}
+        {/*{title: "Milan", value: "4"},*/}
+        {/*{title: "New York", value: "5"}]}/>*/}
 
     </div>
   );
