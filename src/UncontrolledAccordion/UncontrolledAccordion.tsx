@@ -7,7 +7,7 @@ type AccordionPropsType = {
 }
 
 
-export const UncontrolledAccordion = (props: AccordionPropsType) => {
+export const UncontrolledAccord = (props: AccordionPropsType) => {
     const [collapsed, dispatch] = useReducer(UncontrolledAccordionReducer, {collapsed: false})
     return (
         <div>
@@ -38,3 +38,6 @@ const AccordionBody = () => {
         </ul>
     )
 }
+
+export const UncontrolledAccordion = React.memo(UncontrolledAccord)
+
